@@ -1,22 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const educationController = require("../controllers/educationController");
-
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 
-// Create
-router.post("/",authMiddleware, educationController.createEducation);
-// Delete
-router.delete("/:id",authMiddleware, educationController.deleteEducation);
-// Update
-router.put("/:id",authMiddleware, educationController.updateEducation);
+// Admin-only routes with logo upload support
+router.post("/", authMiddleware, upload.single("logoUrl"), educationController.createEducation);
+router.put("/:id", authMiddleware, upload.single("logoUrl"), educationController.updateEducation);
 
-// Read all
+// Delete route
+router.delete("/:id", authMiddleware, educationController.deleteEducation);
+
+// Public routes
 router.get("/", educationController.getAllEducation);
-
-// Read one
 router.get("/:id", educationController.getEducationById);
-
-
 
 module.exports = router;

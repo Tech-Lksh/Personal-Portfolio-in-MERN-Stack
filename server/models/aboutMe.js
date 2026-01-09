@@ -1,14 +1,17 @@
-// models/AboutMe.js
 const mongoose = require("mongoose");
 
 const aboutMeSchema = new mongoose.Schema({
   name: { type: String, required: true },
   profession: { type: String, required: true },
   resumeUrl: { type: String, required: true },
+
+  // 🔥 NEW: profile image (Cloudinary URL)
+  profileImage: { type: String },
+
   socialLinks: {
-    linkedin: { type: String, required: false },
-    github: { type: String, required: false },
-    leetcode: { type: String, required: false },
+    linkedin: { type: String },
+    github: { type: String },
+    leetcode: { type: String },
   }
 }, {
   timestamps: true

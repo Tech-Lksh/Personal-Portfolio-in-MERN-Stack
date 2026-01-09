@@ -1,15 +1,17 @@
-// routes/skillRoutes.js
 const express = require("express");
 const router = express.Router();
 const skillController = require("../controllers/skillController");
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");  // Cloudinary multer middleware
 
-// Admin-only routes (create, update, delete)
-router.post("/", authMiddleware, skillController.createSkill);
-router.put("/:id", authMiddleware, skillController.updateSkill);
+// Admin-only routes
+// Ab POST aur PUT dono me file upload kar sakte hain — multiple files for skills logos
+router.post("/", authMiddleware, upload.array("logos"), skillController.createSkill);
+router.put("/:id", authMiddleware, upload.array("logos"), skillController.updateSkill);
+
 router.delete("/:id", authMiddleware, skillController.deleteSkill);
 
-// Public routes (read-only)
+// Public routes
 router.get("/", skillController.getSkills);
 router.get("/:id", skillController.getSkillById);
 

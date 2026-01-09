@@ -2,11 +2,17 @@ const express = require("express");
 const router = express.Router();
 const aboutMeController = require("../controllers/aboutMeContoller");
 const authMiddleware = require("../middleware/authMiddleware");
+const upload = require("../middleware/upload");
 
-// Public route to get About Me
+// Public route
 router.get("/", aboutMeController.getAboutMe);
 
-// Admin-only route to update About Me
-router.put("/", authMiddleware, aboutMeController.updateAboutMe);
+// 🔥 Admin-only update with image upload
+router.put(
+  "/",
+  authMiddleware,
+  upload.single("profileImage"),   // 👈 Cloudinary upload
+  aboutMeController.updateAboutMe
+);
 
 module.exports = router;

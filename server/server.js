@@ -2,11 +2,14 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
+require("dotenv").config();
+
 
 const projectRoutes = require("./routes/projectRoutes");
 const skillRoutes = require("./routes/skillRoutes");
 const aboutMeRoutes = require("./routes/aboutMeRoutes");
 const educationRoutes = require("./routes/educationRoutes");
+const uploadRoutes = require("./routes/uploadRoutes");
 
 // Load .env
 dotenv.config();
@@ -40,7 +43,8 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/skills", skillRoutes);
 app.use("/api/aboutme", aboutMeRoutes);
 app.use("/api/education", educationRoutes);
-app.use("/api/upload", require("./routes/uploadRoutes"));
+app.use("/api", uploadRoutes);
+
 
 
 /* =========================

@@ -3,7 +3,13 @@ const Education = require("../models/education");
 // Create new education entry
 exports.createEducation = async (req, res) => {
   try {
-    const education = new Education(req.body);
+    const data = { ...req.body };
+
+    if (req.file) {
+      data.logoUrl = req.file.path;  // Cloudinary URL
+    }
+
+    const education = new Education(data);
     await education.save();
     res.status(201).json(education);
   } catch (error) {
@@ -35,7 +41,13 @@ exports.getEducationById = async (req, res) => {
 // Update education entry by ID
 exports.updateEducation = async (req, res) => {
   try {
-    const education = await Education.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    const data = { ...req.body };
+
+    if (req.file) {
+      data.logoUrl = req.file.path;  // Cloudinary URL
+    }
+
+    const education = await Education.findByIdAndUpdate(req.params.id, data, { new: true, runValidators: true });
     if (!education) return res.status(404).json({ message: "Education not found" });
     res.status(200).json(education);
   } catch (error) {
