@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const aboutMeSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  profession: { type: String, required: true },
+  profession: { type: String, required: true }, // Description
   resumeUrl: { type: String, required: true },
 
   // 🔥 NEW: profile image (Cloudinary URL)

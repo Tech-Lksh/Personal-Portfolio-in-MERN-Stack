@@ -5,15 +5,11 @@ exports.loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // sirf tumhara email allow
     if (email !== process.env.ADMIN_EMAIL) {
       return res.status(401).json({ message: "Unauthorized access" });
     }
 
-    const isMatch = bcrypt.compare(
-        password,
-        process.env.ADMIN_PASSWORD_HASH
-    );
+    const isMatch = bcrypt.compare(password, process.env.ADMIN_PASSWORD_HASH);
 
     if (!isMatch) {
       return res.status(401).json({ message: "Unauthorized access" });
