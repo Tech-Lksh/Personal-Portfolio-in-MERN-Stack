@@ -1,4 +1,4 @@
-const Skill = require("../models/skill")
+const Skill = require("../models/Skill");
 
 // Helper function: assign uploaded file URLs to req.body.skills array
 function assignLogosToSkills(skills = [], files = []) {
