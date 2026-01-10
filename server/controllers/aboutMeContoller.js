@@ -1,4 +1,4 @@
-const AboutMe = require("../models/AboutMe");
+const AboutMe = require("../models/aboutMe");
 
 // Get About Me (public)
 exports.getAboutMe = async (req, res) => {
