@@ -1,16 +1,18 @@
 const Skill = require("../models/Skill");
 
 // Helper function: assign uploaded file URLs to req.body.skills array
-function assignLogosToSkills(skills, files) {
-  if (!files || files.length === 0) return skills;
+function assignLogosToSkills(skills = [], files = []) {
+  if (!Array.isArray(skills)) return [];
+  if (!files.length) return skills;
 
   for (let i = 0; i < skills.length; i++) {
     if (files[i]) {
-      skills[i].logo = files[i].path;  // Cloudinary URL
+      skills[i].logo = files[i].path;
     }
   }
   return skills;
 }
+
 
 
 // Create new skill
