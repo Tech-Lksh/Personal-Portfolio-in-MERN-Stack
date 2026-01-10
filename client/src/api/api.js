@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "https://personal-portfolio-in-mern-stack-6.onrender.com";
+const API_BASE_URL = "https://personal-portfolio-in-mern-stack-6.onrender.com/api";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
