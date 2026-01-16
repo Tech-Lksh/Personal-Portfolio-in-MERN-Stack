@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: API_BASE_URL || "http://localhost:5000",
+  baseURL: API_BASE_URL,
 });
 
 // 🔐 Request: token sirf tab add hoga jab ho
