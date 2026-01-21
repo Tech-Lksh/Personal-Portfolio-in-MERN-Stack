@@ -21,7 +21,7 @@ const AboutMe = () => {
   }, []);
 
   if (error) return <p className="text-red-500 text-center mt-10">{error}</p>;
-  if (!aboutMe) return <p className="text-center mt-10 text-white">Loading...</p>;
+  if (!aboutMe) return <p className="text-center mt-10 text-white">Loading About_Me...</p>;
 
   return (
     <section
