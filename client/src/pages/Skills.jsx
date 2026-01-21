@@ -19,7 +19,7 @@ const Skills = () => {
   }, []);
 
   if (error) return <p className="text-red-500 text-center">{error}</p>;
-  if (!skillsData.length) return <p className="text-center text-white">Loading...</p>;
+  if (!skillsData.length) return <p className="text-center text-white">Loading Skills...</p>;
 
   return (
     <section
